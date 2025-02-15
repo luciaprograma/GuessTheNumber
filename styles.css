@@ -55,6 +55,23 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.language-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.flag {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.flag:hover {
+  transform: scale(1.1);
+}
 
 .number {
   background: #eee;

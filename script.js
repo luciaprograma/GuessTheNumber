@@ -1,77 +1,91 @@
 "use strict";
-//Selecting elements
-const againBtn = document.querySelector(".again");
-const number = document.querySelector(".number");
-const guess = document.querySelector(".guess");
-const checkBtn = document.querySelector(".check");
-const message = document.querySelector(".message");
-const score = document.querySelector(".score");
-const highScore = document.querySelector(".highscore");
+// game.js
 
-//Modify score
-const modifyScore = function (number) {
-  currentScore = currentScore + number;
-  score.textContent = currentScore;
-  return currentScore;
-};
+class Game {
+  constructor() {
+    this.secretNumber = this.generateSecretNumber();
+    this.currentScore = 20;
+    this.currentHighScore = 0;
+    this.number = document.querySelector(".number");
+    this.score = document.querySelector(".score");
+    this.highScore = document.querySelector(".highscore");
+    this.message = document.querySelector(".message");
+    this.guess = document.querySelector(".guess");
+    this.checkBtn = document.querySelector(".check");
+    this.againBtn = document.querySelector(".again");
 
-//HighScore control
+    // Bind events to buttons
+    this.checkBtn.addEventListener("click", () => this.checkGuess());
+    this.againBtn.addEventListener("click", () => this.resetGame());
 
-const highScoreControl = function () {
-  if (currentHighScore < currentScore) {
-    currentHighScore = currentScore;
-    highScore.textContent = currentHighScore;
+    // Initialize the score
+    this.updateScore();
   }
-};
 
-//Generting a random number between 1 and 20
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-//Initial score
-let currentScore = 20;
-let currentHighScore = 0;
+  // Generate a random number between 1 and 20
+  generateSecretNumber() {
+    return Math.trunc(Math.random() * 20) + 1;
+  }
 
-//Check button event listener
-checkBtn.addEventListener("click", function () {
-  if (currentScore > 0) {
-    //Get the input value
-    let inputNumber = guess.value;
-    const numberValue = Number(inputNumber.trim());
+  // Update the score
+  updateScore() {
+    this.score.textContent = this.currentScore;
+    this.highScore.textContent = this.currentHighScore;
+  }
 
-    //Check unvalid value
-    if (!Number.isInteger(numberValue) || numberValue < 1 || numberValue > 20) {
-      message.textContent = "Enter a valid number 🤔";
+  // Modify the score
+  modifyScore(number) {
+    this.currentScore += number;
+    this.updateScore();
+  }
 
-      //if WIN
-    } else if (numberValue === secretNumber) {
-      message.textContent = "🎉 Correct Number! Play again 🏆";
-      number.textContent = secretNumber;
-      document.body.style.backgroundColor = "#60b347";
-      number.style.width = "30rem";
-      modifyScore(1);
-      highScoreControl();
-      //guess to Low
-    } else if (secretNumber > numberValue) {
-      message.textContent = "📉 Too low!";
-      modifyScore(-1);
-      //Guess to High
-    } else if (secretNumber < numberValue) {
-      message.textContent = "📈 Too high!";
-      modifyScore(-1);
+  // Highscore control
+  highScoreControl() {
+    if (this.currentScore > this.currentHighScore) {
+      this.currentHighScore = this.currentScore;
+      this.updateScore();
     }
-  } else {
-    message.textContent = "You lost the game! 💥 Try again";
   }
-});
 
-//Again button event listener
-againBtn.addEventListener("click", function () {
-  //Reset the game
-  secretNumber = Math.trunc(Math.random() * 20) + 1;
-  currentScore = 20;
-  score.textContent = currentScore;
-  message.textContent = "Start guessing...";
-  number.textContent = "❓";
-  guess.value = "";
-  document.body.style.backgroundColor = "#222";
-  number.style.width = "15rem";
-});
+  // Check the guessed number
+  checkGuess() {
+    if (this.currentScore > 0) {
+      const numberValue = Number(this.guess.value.trim());
+
+      // Check for invalid input
+      if (!Number.isInteger(numberValue) || numberValue < 1 || numberValue > 20) {
+        this.message.textContent = "Enter a valid number 🤔";
+      } else if (numberValue === this.secretNumber) {
+        this.message.textContent = "🎉 Correct Number! Play again 🏆";
+        this.number.textContent = this.secretNumber;
+        document.body.style.backgroundColor = "#60b347";
+        this.number.style.width = "30rem";
+        this.modifyScore(1);
+        this.highScoreControl();
+      } else if (this.secretNumber > numberValue) {
+        this.message.textContent = "📉 Too low!";
+        this.modifyScore(-1);
+      } else if (this.secretNumber < numberValue) {
+        this.message.textContent = "📈 Too high!";
+        this.modifyScore(-1);
+      }
+    } else {
+      this.message.textContent = "You lost the game! 💥 Try again";
+    }
+  }
+
+  // Reset the game
+  resetGame() {
+    this.secretNumber = this.generateSecretNumber();
+    this.currentScore = 20;
+    this.message.textContent = "Start guessing...";
+    this.number.textContent = "❓";
+    this.guess.value = "";
+    document.body.style.backgroundColor = "#222";
+    this.number.style.width = "15rem";
+    this.updateScore();
+  }
+}
+
+// Export the class
+export default Game;
