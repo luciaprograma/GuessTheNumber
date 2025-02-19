@@ -14,6 +14,7 @@ const loadTranslations = async () => {
 // Update text content based on selected language
 const updateLanguage = (lang, translations) => {
   if (translations && translations[lang]) {
+
     document.querySelector("h1").textContent = translations[lang].title;
     document.querySelector(".between").textContent = translations[lang].between;
     document.querySelector(".btn.again").textContent = translations[lang].again;
@@ -21,8 +22,9 @@ const updateLanguage = (lang, translations) => {
     document.querySelector(".guess").setAttribute("placeholder", translations[lang].guessInputPlaceholder);
     document.querySelector(".btn.check").textContent = translations[lang].checkButton;
     document.querySelector(".message").textContent = translations[lang].startGuessing;
-    document.querySelector(".label-score").textContent = translations[lang].scoreLabel;
-    document.querySelector(".label-highscore").textContent = translations[lang].highscoreLabel;
+    document.querySelector(".label-score").innerHTML = translations[lang].scoreLabel + " <span class='score'>" + this.currentScore + "</span>";
+    document.querySelector(".label-highscore").innerHTML = translations[lang].highscoreLabel + " <span class='highscore'>" + this.currentHighScore + "</span>";
+    
   }
 };
 

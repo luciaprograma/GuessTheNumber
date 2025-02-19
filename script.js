@@ -79,7 +79,7 @@ class Game {
     this.secretNumber = this.generateSecretNumber();
     this.currentScore = 20;
     this.message.textContent = "Start guessing...";
-    this.number.textContent = "❓";
+    this.number.textContent = "?";
     this.guess.value = "";
     document.body.style.backgroundColor = "#222";
     this.number.style.width = "15rem";

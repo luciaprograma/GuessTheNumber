@@ -1,36 +1,41 @@
 {
-    "en": {
-      "title": "Guess My Number!",
-      "between": "(Between 1 and 20)",
-      "again": "Again!",
-      "number": "?",
-      "guessInputPlaceholder": " ",
-      "checkButton": "Check!",
-      "startGuessing": "Start guessing...",
-      "scoreLabel": "💯 Score: ",
-      "highscoreLabel": "🎇 Highscore: "
-    },
-    "es": {
-      "title": "¡Adivina mi número!",
-      "between": "(Entre 1 y 20)",
-      "again": "¡Otra vez!",
-      "number": "?",
-      "guessInputPlaceholder": " ",
-      "checkButton": "¡Comprobar!",
-      "startGuessing": "Comienza a adivinar...",
-      "scoreLabel": "💯 Puntaje: ",
-      "highscoreLabel": "🎇 Mejor puntaje: "
-    },
-    "pt": {
-      "title": "Adivinha o meu número!",
-      "between": "(Entre 1 e 20)",
-      "again": "Novamente!",
-      "number": "?",
-      "guessInputPlaceholder": " ",
-      "checkButton": "Verificar!",
-      "startGuessing": "Comece a adivinhar...",
-      "scoreLabel": "💯 Pontuação: ",
-      "highscoreLabel": "🎇 Melhor pontuação: "
-    }
+  "en": {
+    "title": "Guess My Number!",
+    "between": "(Between 1 and 20)",
+    "again": "Again!",
+    "number": "?",
+    "guessInputPlaceholder": " ",
+    "checkButton": "Check!",
+    "startGuessing": "Start guessing...",
+    "scoreLabel": "💯 Score: ",
+    "highscoreLabel": "🎇 Highscore: ",
+    "highscore": "0",
+    "score": "20"
+  },
+  "es": {
+    "title": "¡Adivina mi número!",
+    "between": "(Entre 1 y 20)",
+    "again": "¡Otra vez!",
+    "number": "?",
+    "guessInputPlaceholder": " ",
+    "checkButton": "¡Comprobar!",
+    "startGuessing": "Comienza a adivinar...",
+    "scoreLabel": "💯 Puntaje: ",
+    "highscoreLabel": "🎇 Mejor puntaje: ",
+    "highscore": "0",
+    "score": "20"
+  },
+  "pt": {
+    "title": "Adivinha o meu número!",
+    "between": "(Entre 1 e 20)",
+    "again": "Novamente!",
+    "number": "?",
+    "guessInputPlaceholder": " ",
+    "checkButton": "Verificar!",
+    "startGuessing": "Comece a adivinhar...",
+    "scoreLabel": "💯 Pontuação: ",
+    "highscoreLabel": "🎇 Melhor pontuação: ",
+    "highscore": "0",
+    "score": "20"
   }
-  
+}
